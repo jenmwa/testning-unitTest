@@ -23,13 +23,13 @@ let todos: Todo[] = JSON.parse(localStorage.getItem("todos") || "[]");
   }
 );
 
-function createNewTodo(todoText: string, todos: Todo[]) {
+export function createNewTodo(todoText: string, todos: Todo[]) {
   let result = addTodo(todoText, todos);
 
   if (result.success) {
-    createHtml(todos);
+    exports.createHtml(todos);
   } else {
-    displayError(result.error, true);
+    exports.displayError(result.error, true);
   }
 }
 

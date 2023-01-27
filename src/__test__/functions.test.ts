@@ -1,6 +1,10 @@
 import { addTodo, changeTodo, removeAllTodos } from '../ts/functions';
 import { Todo } from "../ts/models/Todo";
 
+/*************************************************************************************************************
+ * ******************************** function addTodo ***************************************************
+ *************************************************************************************************************/
+
 describe ('should test add todo or not to list', () => {
 
   test('should add todo to list',() => {
@@ -49,9 +53,9 @@ describe ('should test todo character length', () => {
 
   test('should not add todo if todo is less than 3 characters', () => {
     const todos: Todo[] = [];
-    const shortTodoText: string = "I";
+    const todoText: string = "I";
 
-    const shortResult = addTodo(shortTodoText, todos);
+    const shortResult = addTodo(todoText, todos);
 
     expect(shortResult.success).toBe(false);
     expect(todos).toHaveLength(0);
@@ -88,6 +92,10 @@ describe ('should test errorMsg', () => {
   });
 });
 
+/*************************************************************************************************************
+ * ******************************** function changeTodo ***************************************************
+ *************************************************************************************************************/
+
 describe ('should toggle done property of the todo', () => {
 
   test('should toggle done property of the todo if true', () => {
@@ -114,6 +122,10 @@ describe ('should toggle done property of the todo', () => {
   
   });
 });
+
+/*************************************************************************************************************
+ * ******************************** function removeAllTodo ***************************************************
+ *************************************************************************************************************/
 
 test ('should remove all the todos from the list', () => {
 

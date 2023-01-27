@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">56.41% </span>
+                <span class="strong">55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>22/39</span>
+                <span class='fraction'>22/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/15</span>
+                <span class='fraction'>10/15</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.26% </span>
+                <span class="strong">56.41% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/38</span>
+                <span class='fraction'>22/39</span>
             </div>
         
             
@@ -174,26 +174,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -260,26 +260,26 @@ let todos: Todo[] = JSON.parse(localStorage.getItem("todos") || "[]");
   }
 );
 &nbsp;
-function <span class="fstat-no" title="function not covered" >createNewTodo(</span>todoText: string, todos: Todo[]) {
-  let result = <span class="cstat-no" title="statement not covered" >addTodo(todoText, todos);</span>
+export function createNewTodo(todoText: string, todos: Todo[]) {
+  let result = addTodo(todoText, todos);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  if (result.success) {</span>
-<span class="cstat-no" title="statement not covered" >    createHtml(todos);</span>
+  if (result.success) {
+    exports.createHtml(todos);
   } else {
-<span class="cstat-no" title="statement not covered" >    displayError(result.error, true);</span>
+    exports.displayError(result.error, true);
   }
 }
 &nbsp;
-export function createHtml(todos: Todo[]) {
-  localStorage.setItem("todos", JSON.stringify(todos));
+export function <span class="fstat-no" title="function not covered" >createHtml(</span>todos: Todo[]) {
+<span class="cstat-no" title="statement not covered" >  localStorage.setItem("todos", JSON.stringify(todos));</span>
 &nbsp;
-  let todosContainer: HTMLUListElement = document.getElementById(
+  let todosContainer: HTMLUListElement = <span class="cstat-no" title="statement not covered" >document.getElementById(</span>
     "todos"
   ) as HTMLUListElement;
 &nbsp;
-  todosContainer.innerHTML = "";
+<span class="cstat-no" title="statement not covered" >  todosContainer.innerHTML = "";</span>
 &nbsp;
-  for (let i = 0; i &lt; todos.length; i++) {
+<span class="cstat-no" title="statement not covered" >  for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; todos.length; i++) {</span>
     let li: HTMLLIElement = <span class="cstat-no" title="statement not covered" >document.createElement("li");</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (todos[i].done) {</span>
@@ -328,7 +328,7 @@ export function clearTodos(todos: Todo[]) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-01-27T18:59:30.929Z
+                at 2023-01-27T21:14:24.172Z
             </div>
         <script src="../prettify.js"></script>
         <script>

@@ -36,6 +36,50 @@ beforeEach(() => {
 //  * 
 //  */
 
+/*************************************************************************************************************
+ * ******************************** function createNewTodo ***************************************************
+ *************************************************************************************************************/
+
+test('should call createHtml', () => {
+  //arrange
+  const todos: Todo[] = [];
+  const todoText: string = 'I will do this';
+  const spyOnCreateHtml = jest.spyOn(main, 'createHtml').mockReturnValue();
+  
+  //act
+  main.createNewTodo(todoText, todos);
+
+  //assert
+  expect(spyOnCreateHtml).toHaveBeenCalled();
+
+
+});
+
+test('should call displayError', () => {
+  //arrange
+  const todos: Todo[] = [];
+  const todoText: string = "I";
+  const spyOnDisplayError = jest.spyOn(main, "displayError").mockReturnValue();
+
+  //act
+  main.createNewTodo(todoText, todos);
+
+  //assert
+  expect(spyOnDisplayError).toHaveBeenCalled();
+  spyOnDisplayError.mockRestore();
+
+});
+
+/*************************************************************************************************************
+ * ******************************** function createHtml ***************************************************
+ *************************************************************************************************************/
+
+
+/*************************************************************************************************************
+ * ******************************** function toggleTodo ***************************************************
+ *************************************************************************************************************/
+
+
 describe ('should call changeTodo & createHTML', () => {
 
   test('should call changeTodo', () => {
@@ -84,6 +128,10 @@ describe ('should call changeTodo & createHTML', () => {
   });
 });
 
+/*************************************************************************************************************
+ * ******************************** function displayError ***************************************************
+ *************************************************************************************************************/
+
 describe('should add/remove errorMsg depending on argument ', () => {
 
   test('should show error when show is true', () => {
@@ -117,9 +165,13 @@ describe('should add/remove errorMsg depending on argument ', () => {
   });
 });
 
+/*************************************************************************************************************
+ * ******************************** function clearTodos ***************************************************
+ *************************************************************************************************************/
+
 describe('should call removeAllTodos & createHTML', () => {
 
-  test('should call removeAllTodos & createHtml', () => {
+  test('should call removeAllTodos', () => {
     //arrange
     document.body.innerHTML = `<ul id="todos" class="todo"></ul>`;
     let todos: Todo[] = [];
@@ -148,18 +200,3 @@ describe('should call removeAllTodos & createHTML', () => {
   });
 
 });
-
-// test('name', () => {
-  
-// describe('localStorage tests',() => {
-
-// });
-
-// describe('arrays tests',() => {
-
-// });
-
-
-
-// //test för if
-// //test som kör else
