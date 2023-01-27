@@ -33,7 +33,7 @@ function createNewTodo(todoText: string, todos: Todo[]) {
   }
 }
 
-function createHtml(todos: Todo[]) {
+export function createHtml(todos: Todo[]) {
   localStorage.setItem("todos", JSON.stringify(todos));
 
   let todosContainer: HTMLUListElement = document.getElementById(
@@ -59,9 +59,9 @@ function createHtml(todos: Todo[]) {
   }
 }
 
-function toggleTodo(todo: Todo) {
+export function toggleTodo(todo: Todo) {
   changeTodo(todo);
-  createHtml(todos);
+  exports.createHtml(todos);
 }
 
 export function displayError(error: string, show: boolean) {
@@ -78,9 +78,9 @@ export function displayError(error: string, show: boolean) {
   }
 };
 
-function clearTodos(todos: Todo[]) {
+export function clearTodos(todos: Todo[]) {
   removeAllTodos(todos);
-  createHtml(todos);
+  exports.createHtml(todos);
 }
 
 // createHtml(todos);
