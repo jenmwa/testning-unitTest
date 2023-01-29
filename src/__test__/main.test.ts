@@ -6,39 +6,33 @@ import * as functions from "../ts/functions";
 import * as main from "../ts/main";
 
 import { Todo } from "../ts/models/Todo";
+import { IAddResponse } from "../ts/models/IAddResult";
 
 
 beforeEach(() => {
   document.body.innerHTML = '';
 });
 
-
-//import { createNewToDo, createHTML } from '../ts/main';
-
-    // expect(spy).toHaveBeenCalled();
-    // expect(spy).toHaveBeenCalledTimes(1);
-    // expect(spy).toHaveBeenCalledWith('lorem');
-
-
-// /**
-//  * FUNCTIONS IN MAIN.TS
-//  * 
-//  * createNewTodo - if & else calling, test IF if working.
-//  * createHTML - 
-//  * toggleToDo - check calling changeTodo & createHtml
-//  * displayError - add class, remove class, - should add/remove errorMsg depending on argument
-//  * clearTodos - check calling removeAllTodos & createHtml
-//  * 
-//  * 
-//  * addToDo (import from functions.ts)
-//  * changeToDo (import from functions.ts)
-//  * removeAllTodos (import from functions.ts)
-//  * 
-//  */
-
 /*************************************************************************************************************
  * ******************************** function createNewTodo ***************************************************
  *************************************************************************************************************/
+
+test('should call addTodo', () => {
+      //arrange
+  const todos: Todo[] = [];
+  const todoText: string = 'I should do this';
+  const result: IAddResponse = { success: true, error: '' };
+  document.body.innerHTML = `<ul id="todos" class="todo"></ul>`
+  const spyOnAddTodo = jest.spyOn(functions, 'addTodo').mockReturnValue(result);
+
+  //act
+  main.createNewTodo(todoText, todos);
+
+  //assert
+  expect(spyOnAddTodo).toHaveBeenCalled();
+  spyOnAddTodo.mockRestore();
+
+});
 
 test('should call createHtml', () => {
   //arrange
@@ -51,7 +45,7 @@ test('should call createHtml', () => {
 
   //assert
   expect(spyOnCreateHtml).toHaveBeenCalled();
-
+  spyOnCreateHtml.mockRestore();
 
 });
 
@@ -70,9 +64,37 @@ test('should call displayError', () => {
 
 });
 
+
 /*************************************************************************************************************
  * ******************************** function createHtml ***************************************************
  *************************************************************************************************************/
+
+test('should call toggleTodo correctly', () => {
+  //arrange
+
+  //act
+
+  //assert
+});
+
+test('should add CSS class done if done', () => {
+  //arrange
+  document.body.innerHTML = `<ul id="todos" class="todo"></ul>`;
+
+  const todos: Todo[] = [
+    {
+      text: 'do this',
+      done: true
+    }
+  ];
+
+  //act
+  main.createHtml(todos);
+
+  //assert
+  let result = document.querySelector(".todo__text") as HTMLDivElement;
+  expect(result.classList.contains("todo__text--done")).toBeTruthy();
+});
 
 
 /*************************************************************************************************************
@@ -86,23 +108,20 @@ describe ('should call changeTodo & createHTML', () => {
     //arrange
     document.body.innerHTML = `<ul id="todos" class="todo"></ul>`;
 
-    let todoList: Todo[] = [
+    const todoList: Todo[] = [
       {
         text: 'do this',
         done: true
       }
-    ]
-
-    // let todos: Todo[] = [todo];
+    ];
     const spyOnChangeTodo = jest.spyOn(functions, 'changeTodo').mockReturnValue();
-    // let spyOnCreateHtml = jest.spyOn(main, 'createHtml').mockReturnValue;
     
     //act
     main.toggleTodo(todoList[0]);
 
     //assert
     expect(spyOnChangeTodo).toHaveBeenCalled();
-    // expect(spyOnCreateHtml).toBeCalled();
+    spyOnChangeTodo.mockRestore();
 
   });
 
@@ -196,6 +215,7 @@ describe('should call removeAllTodos & createHTML', () => {
 
     //assert
     expect(spyOnCreateHtml).toHaveBeenCalled();
+    spyOnCreateHtml.mockRestore();
 
   });
 

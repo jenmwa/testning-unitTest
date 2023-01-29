@@ -81,9 +81,10 @@ describe ('should test errorMsg', () => {
   test('should return error msg if todo text is less than 3 characters', () => {
   //arrange
   const todos: Todo[] = [];
+  const todo: string = 'No';
 
   //act
-  const { success, error} = addTodo ('', todos);
+  const { success, error} = addTodo (todo, todos);
 
   //assert
   expect(success).toBe(false);
