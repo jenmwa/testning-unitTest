@@ -17,7 +17,7 @@ let todos: Todo[] = JSON.parse(localStorage.getItem("todos") || "[]");
     let todoText: string = (
       document.getElementById("newTodoText") as HTMLInputElement
     ).value;
-    console.log("Todos when creating", todos);
+    // console.log("Todos when creating", todos);
 
     createNewTodo(todoText, todos);
   }
