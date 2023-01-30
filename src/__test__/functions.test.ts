@@ -23,12 +23,16 @@ describe ('should test add todo or not to list', () => {
   });
 
   test('should not add todo to list',() => {
+
+    //arrange
     const todos: Todo[] = [];
     const todoText: string = '';
     let length = todos.length;
     
+    //act
     addTodo(todoText, todos);
     
+    //assert
     expect(todos.length).toBe(length);
     
     });
@@ -52,11 +56,15 @@ describe ('should test todo character length', () => {
   });
 
   test('should not add todo if todo is less than 3 characters', () => {
+
+    //arrange
     const todos: Todo[] = [];
     const todoText: string = "I";
 
+    //act
     const shortResult = addTodo(todoText, todos);
 
+    //assert
     expect(shortResult.success).toBe(false);
     expect(todos).toHaveLength(0);
 
@@ -65,6 +73,7 @@ describe ('should test todo character length', () => {
 
 describe ('should test errorMsg', () => {
   test('should not return error msg if todo text is at least 3 characters', () => {
+
     //arrange
     const todos: Todo[] = [];
     const todo: string = 'this is a todo';
@@ -79,6 +88,7 @@ describe ('should test errorMsg', () => {
   });
 
   test('should return error msg if todo text is less than 3 characters', () => {
+
   //arrange
   const todos: Todo[] = [];
   const todo: string = 'No';
@@ -100,6 +110,7 @@ describe ('should test errorMsg', () => {
 describe ('should toggle done property of the todo', () => {
 
   test('should toggle done property of the todo if true', () => {
+
     //arrange
     const todo = new Todo ('string', false);
   
@@ -112,6 +123,7 @@ describe ('should toggle done property of the todo', () => {
   });
   
   test('should not toggle the done property of the todo if false', () => {
+
     //arrange
     const todo = new Todo ('string', true);
   
@@ -130,7 +142,7 @@ describe ('should toggle done property of the todo', () => {
 
 test ('should remove all the todos from the list', () => {
 
-  //act
+  //arrange
   const todos: Todo[] = [
     new Todo ('I should do this', false),
     new Todo ('I should do that', false),
