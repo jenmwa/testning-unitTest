@@ -10,7 +10,7 @@ describe ('should test add todo or not to list', () => {
   test('should add todo to list',() => {
   //arrange
   let todos: Todo[] = [];
-  let todoText: string = "do this";
+  let todoText: string = "I should do this";
   let length = todos.length;
 
   //act
@@ -18,7 +18,7 @@ describe ('should test add todo or not to list', () => {
     
   //assert
   expect(todos.length).toBe(length +1);
-  expect(todos[todos.length-1].text).toBe('do this');
+  expect(todos[todos.length-1].text).toBe('I should do this');
 
   });
 
@@ -39,7 +39,7 @@ describe ('should test todo character length', () => {
 
     //arrange
     const todos: Todo[] = [];
-    const todoText: string = 'i will do this';
+    const todoText: string = 'i should do this';
 
     //act
     const result = addTodo(todoText, todos);
